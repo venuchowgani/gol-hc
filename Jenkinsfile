@@ -17,7 +17,6 @@ pipeline {
                     snapshotRepo: 'maven_project-libs-snapshot'
                 )
                 rtMavenRun (
-                    tool: 'Maven 3.3.9',
                     pom: 'pom.xml',
                     goals: '-U clean install',
                     deployerId: "maven-deployer"
