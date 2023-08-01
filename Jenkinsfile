@@ -1,6 +1,9 @@
 pipeline {
     agent { label 'JDK_17' }
-    tools { jdk 'JDK_8'}
+    tools { 
+        jdk 'JDK_8'
+        maven 'DEFAULT_MAVEN'
+    }
     stages {
         stage('VCS') {
             steps {
