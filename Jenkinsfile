@@ -14,17 +14,17 @@ pipeline {
 
     stages {
 
-        stage('VCS') {
+        // stage('VCS') {
 
-            steps {
+        //     steps {
 
-                git url: 'https://github.com/venuchowgani/gol-hc.git',
+        //         git url: 'https://github.com/venuchowgani/gol-hc.git',
 
-                    branch: 'master'
+        //             branch: 'master'
 
-            }
+        //     }
 
-        }      
+        // }      
 
         stage('version') {
 
@@ -38,57 +38,57 @@ pipeline {
 
         }
 
-        stage('Publish artifacts to Jfrog') {
+        // stage('Publish artifacts to Jfrog') {
 
-            steps {
+        //     steps {
 
-                rtMavenDeployer (
+        //         rtMavenDeployer (
 
-                    tool: 'default'
+        //             tool: 'default'
 
-                    id: "MAVEN_DEPLOYER",
+        //             id: "MAVEN_DEPLOYER",
 
-                    serverId: "JFROG_ID",
+        //             serverId: "JFROG_ID",
 
-                    releaseRepo: 'maven_project-libs-release',
+        //             releaseRepo: 'maven_project-libs-release',
 
-                    snapshotRepo: 'maven_project-libs-snapshot'
+        //             snapshotRepo: 'maven_project-libs-snapshot'
 
-                )
+        //         )
 
-                rtMavenRun (                    
+        //         rtMavenRun (                    
 
-                    pom: 'pom.xml',
+        //             pom: 'pom.xml',
 
-                    goals: 'clean install',
+        //             goals: 'clean install',
 
-                    deployerId: "MAVEN_DEPLOYER"
+        //             deployerId: "MAVEN_DEPLOYER"
 
-                )
+        //         )
 
-                rtPublishBuildInfo (
+        //         rtPublishBuildInfo (
 
-                    serverId: "Jfrog_Devops"
+        //             serverId: "Jfrog_Devops"
 
-                )
+        //         )
 
-            }
+        //     }
 
-        }
+        // }
 
-        stage('Archiving the artifacts & publishing test results') {
+        // stage('Archiving the artifacts & publishing test results') {
 
-            steps {
+        //     steps {
 
-                archiveArtifacts onlyIfSuccessful: true,
+        //         archiveArtifacts onlyIfSuccessful: true,
 
-                            artifacts: '**/target/*.war'
+        //                     artifacts: '**/target/*.war'
 
-                junit testResults: '**/surefire-reports/TEST-*.xml'
+        //         junit testResults: '**/surefire-reports/TEST-*.xml'
 
-            }
+        //     }
 
-        }
+        // }
 
     }
 
