@@ -9,6 +9,7 @@ pipeline {
             steps {
                 git branch: 'master',
                     url: 'https://github.com/venuchowgani/gol-hc.git'
+                sh 'mvn --version'
             }
         }
         stage('JFROG') {
