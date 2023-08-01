@@ -10,6 +10,7 @@ pipeline {
                 git branch: 'master',
                     url: 'https://github.com/venuchowgani/gol-hc.git'
                 sh 'mvn --version'
+                sh 'java -version'
             }
         }
         // stage('JFROG') {
