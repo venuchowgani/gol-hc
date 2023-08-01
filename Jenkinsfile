@@ -6,9 +6,9 @@ pipeline {
 
     tools {
 
-        jdk 'JDK_17'
+        jdk 'JDK_8'
 
-        # maven 'MAVEN-3.9'
+        // maven 'MAVEN-3.9'
 
     }
 
